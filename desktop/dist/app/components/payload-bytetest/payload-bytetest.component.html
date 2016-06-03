@@ -1,0 +1,70 @@
+<div class="row">
+    <div class="col s2 input-field">
+        <input type="number" min="1" max="10" class="validate" [(ngModel)]="bit.bytes">
+        <label data-error="Between 1 and 10">Bytes</label>
+    </div>
+    <div class="col s3">
+        <label>Negate?</label>
+        <div class="switch">
+            <label>
+                No
+                <input type="checkbox" [(ngModel)]="bit.negate_operator">
+                <span class="lever">&nbsp;</span> Yes
+            </label>
+        </div>
+    </div>
+    <div class="col s3 input-field">
+        <select materialize="material_select" [(ngModel)]="bit.operator">
+            <option value="&lt;">Less than</option>
+            <option value="&gt;">Greater than</option>
+            <option value="&lt;=">Less than/equal</option>
+            <option value="&gt;=">Greater than/equal</option>
+            <option value="=">Equal</option>
+            <option value="&amp;">AND</option>
+            <option value="^">OR</option>
+        </select>
+        <label>Operator</label>
+    </div>
+    <div class="col s4 input-field">
+        <input type="number"[(ngModel)]="bit.value">
+        <label>Value</label>
+    </div>
+</div>
+<div class="row">
+    <div class="col s2">
+        <label>Endianness</label>
+        <button class="btn blue waves-effect waves-light" (click)="bit.endian = (bit.endian == 'little' ? 'big' : 'little')">{{ (bit.endian || 'big') }}</button>
+    </div>
+    <div class="col s3 input-field">
+        <input type="number" [(ngModel)]="bit.offset">
+        <label>Offset</label>
+    </div>
+    <div class="col s3 input-field">
+        <input type="checkbox" id="test_relative_{{i}}" [(ngModel)]="bit.relative">
+        <label attr.for="test_relative_{{i}}">Relative</label>
+    </div>
+    <div class="col s4 input-field">
+        <input type="checkbox" id="test_dce_{{i}}" [(ngModel)]="bit.dce">
+        <label attr.for="test_dce_{{i}}">Use DCE Preprocessor</label>
+    </div>
+</div>
+<div class="row">
+    <div class="col s3">
+        <label>Data Is String</label>
+        <div class="switch">
+            <label>
+                No
+                <input type="checkbox" [(ngModel)]="bit.string">
+                <span class="lever">&nbsp;</span> Yes
+            </label>
+        </div>
+    </div>
+    <div class="col s9 input-field">
+        <select materialize="material_select" [(ngModel)]="bit.string_type">
+            <option value="hex">Hexadecimal</option>
+            <option value="dec">Decimal</option>
+            <option value="oct">Octal</option>
+        </select>
+        <label>Number format</label>
+    </div>
+</div>

@@ -1,0 +1,122 @@
+<div class="row">
+    <div class="col s4">
+        <label>Negate?</label>
+        <div class="switch">
+            <label>
+                No
+                <input type="checkbox" [(ngModel)]="bit.inverted">
+                <span class="lever">&nbsp;</span> Yes
+            </label>
+        </div>
+    </div>
+    <div class="col s8 input-field">
+        <textarea [(ngModel)]="bit.regex" class="materialize-textarea"></textarea>
+        <label>PCRE</label>
+    </div>
+</div>
+<div class="row">
+    <div class="col s12 input-field">
+        <table>
+            <tr>
+                <td>
+                    <input type="checkbox" id="regex_{{i}}_flag_i" [(ngModel)]="bit.flag_i" />
+                    <label attr.for="regex_{{i}}_flag_i">Case Insensitive (i)</label>
+                </td>
+                <td>
+                    <input type="checkbox" id="regex_{{i}}_flag_s" [(ngModel)]="bit.flag_s" />
+                    <label attr.for="regex_{{i}}_flag_s">Dot Matches Newlines (s)</label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="checkbox" id="regex_{{i}}_flag_m" [(ngModel)]="bit.flag_m" />
+                    <label attr.for="regex_{{i}}_flag_m">^ and $ Match Newlines (m)</label>
+                </td>
+                <td>
+                    <input type="checkbox" id="regex_{{i}}_flag_x" [(ngModel)]="bit.flag_x" />
+                    <label attr.for="regex_{{i}}_flag_x">Ignore Whitespace (x)</label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="checkbox" id="regex_{{i}}_flag_A" [(ngModel)]="bit.flag_A" />
+                    <label attr.for="regex_{{i}}_flag_A">Match Start of Buffer (A)</label>
+                </td>
+                <td>
+                    <input type="checkbox" id="regex_{{i}}_flag_E" [(ngModel)]="bit.flag_E" />
+                    <label attr.for="regex_{{i}}_flag_E">$ Matches End of String Only (E)</label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="checkbox" id="regex_{{i}}_flag_G" [(ngModel)]="bit.flag_G" />
+                    <label attr.for="regex_{{i}}_flag_G">Invert Greediness (G)</label>
+                </td>
+                <td>
+                    <input type="checkbox" id="regex_{{i}}_flag_R" [(ngModel)]="bit.flag_R" />
+                    <label attr.for="regex_{{i}}_flag_R">Relative to Last Pattern (R)</label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="checkbox" id="regex_{{i}}_flag_U" [(ngModel)]="bit.flag_U" />
+                    <label attr.for="regex_{{i}}_flag_U">Match Decoded Buffers (U)</label>
+                </td>
+                <td>
+                    <input type="checkbox" id="regex_{{i}}_flag_I" [(ngModel)]="bit.flag_I" />
+                    <label attr.for="regex_{{i}}_flag_I">Match Unnormalized Buffer (I)</label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="checkbox" id="regex_{{i}}_flag_P" [(ngModel)]="bit.flag_P" />
+                    <label attr.for="regex_{{i}}_flag_P">Match Unnormalized Body (P)</label>
+                </td>
+                <td>
+                    <input type="checkbox" id="regex_{{i}}_flag_H" [(ngModel)]="bit.flag_H" />
+                    <label attr.for="regex_{{i}}_flag_H">Match Normalized Header (H)</label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="checkbox" id="regex_{{i}}_flag_D" [(ngModel)]="bit.flag_D" />
+                    <label attr.for="regex_{{i}}_flag_D">Match Normalized Header (D)</label>
+                </td>
+                <td>
+                    <input type="checkbox" id="regex_{{i}}_flag_M" [(ngModel)]="bit.flag_M" />
+                    <label attr.for="regex_{{i}}_flag_M">Match Normalized Method (M)</label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="checkbox" id="regex_{{i}}_flag_C" [(ngModel)]="bit.flag_C" />
+                    <label attr.for="regex_{{i}}_flag_C">Match Normalized Cookie (C)</label>
+                </td>
+                <td>
+                    <input type="checkbox" id="regex_{{i}}_flag_K" [(ngModel)]="bit.flag_K" />
+                    <label attr.for="regex_{{i}}_flag_K">Match Unnormalized Cookie (K)</label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="checkbox" id="regex_{{i}}_flag_S" [(ngModel)]="bit.flag_S" />
+                    <label attr.for="regex_{{i}}_flag_S">Match Status Code (S)</label>
+                </td>
+                <td>
+                    <input type="checkbox" id="regex_{{i}}_flag_Y" [(ngModel)]="bit.flag_Y" />
+                    <label attr.for="regex_{{i}}_flag_Y">Match Status Message (Y)</label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="checkbox" id="regex_{{i}}_flag_B" [(ngModel)]="bit.flag_B" />
+                    <label attr.for="regex_{{i}}_flag_B">Use Raw Bytes (B)</label>
+                </td>
+                <td>
+                    <input type="checkbox" id="regex_{{i}}_flag_O" [(ngModel)]="bit.flag_O" />
+                    <label attr.for="regex_{{i}}_flag_O">Override Match/Recursion Limit (O)</label>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>

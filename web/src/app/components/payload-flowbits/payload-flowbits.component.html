@@ -1,0 +1,23 @@
+<div class="row">
+    <div class="col s4 input-field">
+        <select materialize="material_select" [(ngModel)]="bit.action">
+            <option value="set">Set</option>
+            <option value="setx">Set Exclusive</option>
+            <option value="unset">Unset</option>
+            <option value="toggle">Toggle</option>
+            <option value="isset">Is Set</option>
+            <option value="isnotset">Is Not Set</option>
+            <option value="noalert">No Alert</option>
+            <option value="reset">Reset</option>
+        </select>
+        <label>Flow Bits</label>
+    </div>
+    <div class="col s4 input-field" [hidden]="bit.action == 'reset' || bit.action == 'noalert'">
+        <label>Bits</label>
+        <input type="text" [(ngModel)]="bit.flowbits">
+    </div>
+    <div class="col input-field" [class.s4]="bit.action != 'reset'" [class.s8]="bit.action == 'reset'" [hidden]="bit.action == 'noalert'">
+        <label>Group</label>
+        <input type="text" [required]="bit.flowbits == 'all' || bit.action == 'setx'" [(ngModel)]="bit.group">
+    </div>
+</div>

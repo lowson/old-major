@@ -1,0 +1,101 @@
+<fieldset>
+    <legend>General</legend>
+    <div class="row">
+        <div class="col s12 input-field">
+            <i class="material-icons red-text prefix" *ngIf="!rule.opts.msg">error</i>
+            <input type="text" [(ngModel)]="rule.opts.msg" placeholder="Message Text">
+            <label>Message</label>
+        </div>
+    </div>
+    <div id="references">
+        <div class="row" *ngFor="let r of rule.references; let i = index">
+            <div class="col s4 input-field">
+                <select materialize="material_select" [(ngModel)]="r.type">
+                    <option value="bugtraq">bugtraq</option>
+                    <option value="cve">cve</option>
+                    <option value="nessus">nessus</option>
+                    <option value="arachnids">arachnids</option>
+                    <option value="mcafee">mcafee</option>
+                    <option value="osvdb">osvdb</option>
+                    <option value="msb">msb</option>
+                    <option value="url" selected>url</option>
+                    <option value="md5">md5</option>
+                </select>
+                <label>Reference Type</label>
+            </div>
+            <div class="col input-field" [class.s8]="i != (rule.references.length - 1)" [class.s6]="i == (rule.references.length - 1)">
+                <input type="text" placeholder="Reference" [(ngModel)]="r.value">
+                <label>Reference Value</label>
+            </div>
+            <div class="col s2" *ngIf="i == (rule.references.length - 1)">
+                <button type="button" (click)="addReference()" class="btn red darken-4 waves-effect waves-light"><i class="material-icons">add</i></button>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s3 input-field">
+            <input id="sid" type="number" min="1000000" [(ngModel)]="rule.opts.sid" class="validate">
+            <label for="sid" data-error="SID should be greater than 1000000">Signature ID</label>
+        </div>
+        <div class="col s3 input-field">
+            <input id="rev" type="number" min="1" [(ngModel)]="rule.opts.rev" class="validate">
+            <label for="rev" data-error="Rev must be greater than 0">Revision</label>
+        </div>
+        <div class="col s4 input-field">
+            <select materialize="material_select" [(ngModel)]="rule.opts.classtype">
+                <option value="attempted-admin">attempted-admin</option>
+                <option value="attempted-user">attempted-user</option>
+                <option value="inappropriate-content">inappropriate-content</option>
+                <option value="policy-violation">policy-violation</option>
+                <option value="shellcode-detect">shellcode-detect</option>
+                <option value="successful-admin">successful-admin</option>
+                <option value="successful-user">successful-user</option>
+                <option value="trojan-activity">trojan-activity</option>
+                <option value="unsuccessful-user">unsuccessful-user</option>
+                <option value="web-application-attack">web-application-attack</option>
+                <option value="attempted-dos">attempted-dos</option>
+                <option value="attempted-recon">attempted-recon</option>
+                <option value="bad-unknown">bad-unknown</option>
+                <option value="default-login-attempt">default-login-attempt</option>
+                <option value="denial-of-service">denial-of-service</option>
+                <option value="misc-attack">misc-attack</option>
+                <option value="non-standard-protocol">non-standard-protocol</option>
+                <option value="rpc-portmap-decode">rpc-portmap-decode</option>
+                <option value="successful-dos">successful-dos</option>
+                <option value="successful-recon-largescale">successful-recon-largescale</option>
+                <option value="successful-recon-limited">successful-recon-limited</option>
+                <option value="suspicious-filename-detect">suspicious-filename-detect</option>
+                <option value="suspicious-login">suspicious-login</option>
+                <option value="system-call-detect">system-call-detect</option>
+                <option value="unusual-client-port-connection">unusual-client-port-connection</option>
+                <option value="web-application-activity">web-application-activity</option>
+                <option value="icmp-event">icmp-event</option>
+                <option value="misc-activity">misc-activity</option>
+                <option value="network-scan">network-scan</option>
+                <option value="not-suspicious">not-suspicious</option>
+                <option value="protocol-command-decode">protocol-command-decode</option>
+                <option value="string-detect">string-detect</option>
+                <option value="unknown">unknown</option>
+                <option value="tcp-connection">tcp-connection</option>
+            </select>
+            <label>Class Type</label>
+        </div>
+        <div class="col s2 input-field">
+            <input id="priority" type="number" min="1" max="4" [(ngModel)]="rule.opts.priority" class="validate">
+            <label for="priority" data-error="Between 1-4">Priority</label>
+        </div>
+    </div>
+    <div class="row" *ngFor="let m of rule.metadata; let i = index">
+        <div class="col s5 input-field">
+            <input id="metadata_key_{{i}}"type="text" placeholder="Key" [(ngModel)]="m.k">
+            <label attr.for="metadata_key_{{i}}">Metadata Key</label>
+        </div>
+        <div class="col input-field" [class.s7]="i != (rule.metadata.length - 1)" [class.s5]="i == (rule.metadata.length - 1)">
+            <input id="metadata_value_{{i}}"type="text" placeholder="Value" [(ngModel)]="m.v">
+            <label attr.for="metadata_value_{{i}}">Metadata Value</label>
+        </div>
+        <div class="col s2" *ngIf="i == (rule.metadata.length - 1)">
+            <button type="button" (click)="addMetadata()" class="btn red darken-4"><i class="material-icons">add</i></button>
+        </div>
+    </div>
+</fieldset>

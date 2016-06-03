@@ -1,0 +1,5 @@
+<div class="card" [class.green]="invalidFields.length == 0 && rule.src && rule.sport && rule.dst && rule.dport" [class.red]="(invalidFields.length != 0 || !rule.src || !rule.sport || !rule.dst || !rule.dport)">
+    <div class="card-content white-text">
+        <p class="rule"><i *ngIf="(invalidFields.length != 0 || !rule.src || !rule.sport || !rule.dst || !rule.dport)" class="material-icons">error</i>{{rule.enabled ? "" : "#"}} {{rule.action}} {{rule.proto}} {{rule.src}} {{rule.sport}} {{rule.dir}} {{rule.dst}} {{rule.dport}} {{rule.options}}</p>
+    </div>
+</div>

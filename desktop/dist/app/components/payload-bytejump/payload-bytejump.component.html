@@ -1,0 +1,60 @@
+<div class="row">
+    <div class="col s3 input-field">
+        <input type="number" min="1" max="10" class="validate" [(ngModel)]="bit.bytes">
+        <label data-error="Between 1 and 10">Bytes</label>
+    </div>
+    <div class="col s3 input-field">
+        <input type="number" [(ngModel)]="bit.offset">
+        <label>Offset</label>
+    </div>
+    <div class="col s3 input-field">
+        <input type="checkbox" id="relative_{{i}}" [(ngModel)]="bit.relative"/>
+        <label attr.for="relative_{{i}}">Relative</label>
+    </div>
+    <div class="col s3 input-field">
+        <input type="number" [(ngModel)]="bit.multiplier">
+        <label>Multiplier</label>
+    </div>
+</div>
+<div class="row">
+    <div class="col s2">
+        <label>Endianness</label>
+        <button class="btn blue waves-effect waves-light" (click)="bit.endian = (bit.endian == 'little' ? 'big' : 'little')">{{ (bit.endian || 'big') }}</button>
+    </div>
+    <div class="col s4 input-field">
+        <input type="checkbox" id="jump_dce_{{i}}" [(ngModel)]="bit.dce" />
+        <label attr.for="jump_dce_{{i}}">Use DCE Preprocessor</label>
+    </div>
+    <div class="col s3 input-field">
+        <input type="checkbox" id="jump_align_{{i}}" [(ngModel)]="bit.align" />
+        <label attr.for="jump_align_{{i}}">Align</label>
+    </div>
+    <div class="col s3 input-field">
+        <input type="checkbox" id="jump_from_beginning_{{i}}" [(ngModel)]="bit.from_beginning" />
+        <label attr.for="jump_from_beginning_{{i}}">From Beginning</label>
+    </div>
+</div>
+<div class="row">
+    <div class="col s3">
+        <label>Data Is String</label>
+        <div class="switch">
+            <label>
+                No
+                <input type="checkbox" [(ngModel)]="bit.string">
+                <span class="lever">&nbsp;</span> Yes
+            </label>
+        </div>
+    </div>
+    <div class="col s6 input-field">
+        <select materialize="material_select" [(ngModel)]="bit.string_type">
+            <option value="hex">Hexadecimal</option>
+            <option value="dec">Decimal</option>
+            <option value="oct">Octal</option>
+        </select>
+        <label>Number format</label>
+    </div>
+    <div class="col s3 input-field">
+        <input type="number" [(ngModel)]="bit.post_offset">
+        <label>Post-offset</label>
+    </div>
+</div>

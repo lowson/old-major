@@ -1,0 +1,215 @@
+<div class="row">
+    <div class="col s4">
+        <label>Type</label>
+        <div class="switch">
+            <label>
+                Normal
+                <input type="checkbox" [(ngModel)]="bit.content_filter_type">
+                <span class="lever">&nbsp;</span> Protected
+            </label>
+        </div>
+    </div>
+    <div class="col s3">
+        <label>Negate?</label>
+        <div class="switch">
+            <label>
+                No
+                <input type="checkbox" [(ngModel)]="bit.content_inverted">
+                <span class="lever">&nbsp;</span> Yes
+            </label>
+        </div>
+    </div>
+    <div class="col s5 input-field">
+        <input type="text" [(ngModel)]="bit.pattern">
+        <label>Pattern</label>
+    </div>
+</div>
+<div class="row" [hidden]="!bit.content_filter_type">
+    <div class="col s6 input-field">
+        <select materialize="material_select" [(ngModel)]="bit.hash">
+            <option value="md5">MD5</option>
+            <option value="sha256">SHA-256</option>
+            <option value="sha512">SHA-512</option>
+        </select>
+        <label>Hash</label>
+    </div>
+    <div class="col s6 input-field">
+        <input type="number" [(ngModel)]="bit.original_length" min=0 max=65536 class="validate">
+        <label data-error="Between 0 and 65536">Original Length</label>
+    </div>
+</div>
+<div class="row">
+    <div class="col s3 input-field">
+        <input type="number" [(ngModel)]="bit.depth">
+        <label>Depth</label>
+    </div>
+    <div class="col s3 input-field">
+        <input type="number" [(ngModel)]="bit.offset">
+        <label>Offset</label>
+    </div>
+    <div class="col s3 input-field">
+        <input type="number" [(ngModel)]="bit.distance">
+        <label>Distance</label>
+    </div>
+    <div class="col s3 input-field">
+        <input type="number" [(ngModel)]="bit.within">
+        <label>Within</label>
+    </div>
+</div>
+<div class="row">
+    <div class="col s12">
+        <label>Restrict To</label>
+        <table>
+            <tr>
+                <td>
+                    <input type="checkbox" id="http_{{i}}_client_body" [(ngModel)]="bit.restrict_body" [disabled]="bit.mod_raw || !!bit.uri_content_pattern" />
+                    <label attr.for="http_{{i}}_client_body">HTTP Client Body</label>
+                </td>
+                <td>
+                    <input type="checkbox" id="http_{{i}}_method" [(ngModel)]="bit.restrict_method" [disabled]="bit.mod_raw || !!bit.fast_pattern || !!bit.uri_content_pattern" />
+                    <label attr.for="http_{{i}}_method">HTTP Method</label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="checkbox" id="http_{{i}}_cookie" [(ngModel)]="bit.restrict_cookie" [disabled]="bit.mod_raw || !!bit.fast_pattern || !!bit.uri_content_pattern" />
+                    <label attr.for="http_{{i}}_cookie">HTTP Cookie</label>
+                </td>
+                <td>
+                    <input type="checkbox" id="http_{{i}}_raw_cookie" [(ngModel)]="bit.restrict_raw_cookie" [disabled]="bit.mod_raw || bit.restrict_cookie || !!bit.fast_pattern || !!bit.uri_content_pattern" />
+                    <label attr.for="http_{{i}}_raw_cookie">Raw Cookie</label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="checkbox" id="http_{{i}}_header" [(ngModel)]="bit.restrict_header" [disabled]="bit.mod_raw || !!bit.uri_content_pattern" />
+                    <label attr.for="http_{{i}}_header">HTTP Header</label>
+                </td>
+                <td>
+                    <input type="checkbox" id="http_{{i}}_raw_header" [(ngModel)]="bit.restrict_raw_header" [disabled]="bit.mod_raw || bit.restrict_header || !!bit.fast_pattern || !!bit.uri_content_pattern" />
+                    <label attr.for="http_{{i}}_raw_header">Raw Header</label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="checkbox" id="http_{{i}}_uri" [(ngModel)]="bit.restrict_uri" [disabled]="bit.mod_raw || !!bit.uri_content_pattern" />
+                    <label attr.for="http_{{i}}_uri">HTTP URI</label>
+                </td>
+                <td>
+                    <input type="checkbox" id="http_{{i}}_raw_uri" [(ngModel)]="bit.restrict_raw_uri" [disabled]="bit.mod_raw || bit.restrict_uri || !!bit.fast_pattern || !!bit.uri_content_pattern" />
+                    <label attr.for="http_{{i}}_raw_uri">Raw URI</label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="checkbox" id="http_{{i}}_stat_code" [(ngModel)]="bit.restrict_stat_code" [disabled]="bit.mod_raw || !!bit.fast_pattern || !!bit.uri_content_pattern" />
+                    <label attr.for="http_{{i}}_stat_code">HTTP Status Code</label>
+                </td>
+                <td>
+                    <input type="checkbox" id="http_{{i}}_stat_msg" [(ngModel)]="bit.restrict_stat_msg" [disabled]="bit.mod_raw || !!bit.fast_pattern || !!bit.uri_content_pattern" />
+                    <label attr.for="http_{{i}}_stat_msg">HTTP Status Message</label>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+<div class="row">
+    <div class="col input-field" [class.s12]="bit.fast_pattern != 'args'" [class.s4]="bit.fast_pattern == 'args'">
+        <select materialize="material_select" [(ngModel)]="bit.fast_pattern">
+            <option value="">None</option>
+            <option value="simple">Simple</option>
+            <option value="only">Only</option>
+            <option value="args">With Arguments</option>
+        </select>
+        <label>Fast Pattern</label>
+    </div>
+    <div class="col s4 input-field" [hidden]="bit.fast_pattern != 'args'">
+        <input type="number" [(ngModel)]="bit.fast_pattern_offset">
+        <label>Offset</label>
+    </div>
+    <div class="col s4 input-field" [hidden]="bit.fast_pattern != 'args'">
+        <input type="number" [(ngModel)]="bit.fast_pattern_length">
+        <label>Length</label>
+    </div>
+</div>
+<div class="row">
+    <div class="col s12">
+        <label>Other Options</label>
+        <table>
+            <tr>
+                <td>
+                    <input type="checkbox" id="pattern_mod_cvs" [(ngModel)]="bit.mod_cvs" [disabled]="!!bit.uri_content_pattern" />
+                    <label attr.for="pattern_mod_cvs">Detect CVS Invalid Entry String</label>
+                </td>
+                <td>
+                    <input type="checkbox" id="pattern_mod_ftp" [(ngModel)]="bit.mod_ftp" [disabled]="!!bit.uri_content_pattern" />
+                    <label attr.for="pattern_mod_ftp">Detect FTP Bounce</label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="checkbox" id="pattern_mod_raw" [(ngModel)]="bit.mod_raw" [disabled]="!!bit.uri_content_pattern" />
+                    <label attr.for="pattern_mod_raw">Use Raw Bytes</label>
+                </td>
+                <td>
+                    <input type="checkbox" id="pattern_mod_case" [(ngModel)]="bit.mod_case" />
+                    <label attr.for="pattern_mod_case">Case Insensitive</label>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+<div class="row">
+    <div class="col s3">
+        <label>Negate URI Content?</label>
+        <div class="switch">
+            <label>
+                No
+                <input type="checkbox" [(ngModel)]="bit.uri_content_inverted" [disabled]="bit.restrict_body || bit.restrict_method || bit.restrict_cookie || bit.restrict_raw_cookie || bit.restrict_header || bit.restrict_raw_header || bit.restrict_uri || bit.restrict_raw_uri || bit.restrict_stat_code || bit.restrict_stat_msg">
+                <span class="lever">&nbsp;</span> Yes
+            </label>
+        </div>
+    </div>
+    <div class="col s9 input-field">
+        <input type="text" placeholder="Pattern" [(ngModel)]="bit.uri_content_pattern" [disabled]="bit.restrict_body || bit.restrict_method || bit.restrict_cookie || bit.restrict_raw_cookie || bit.restrict_header || bit.restrict_raw_header || bit.restrict_uri || bit.restrict_raw_uri || bit.restrict_stat_code || bit.restrict_stat_msg">
+        <label>URI Content</label>
+    </div>
+</div>
+<div class="row">
+    <div class="col s4 input-field">
+        <select materialize="material_select" [(ngModel)]="bit.uri_length_mod">
+            <option value="">None</option>
+            <option value="normalized">Normalized</option>
+            <option value="raw">Raw</option>
+        </select>
+        <label>Modifier</label>
+    </div>
+    <div class="col s8 input-field">
+        <input type="text" class="validate" pattern="((\d+<>)|([<>]?))\d+" placeholder="min<>max or [<|>]number" [(ngModel)]="bit.uri_length">
+        <label data-error="min<>max or [<|>]number">URI Length</label>
+    </div>
+</div>
+<div class="row">
+    <div class="col s3">
+        <label>Negate Position?</label>
+        <div class="switch">
+            <label>
+                No
+                <input type="checkbox" [(ngModel)]="bit.isdataat_inverted">
+                <span class="lever">&nbsp;</span> Yes
+            </label>
+        </div>
+    </div>
+    <div class="col s3 input-field">
+        <select materialize="material_select" [(ngModel)]="bit.isdataat_mod">
+            <option value="">None</option>
+            <option value="relative">Relative</option>
+            <option value="raw">Raw Bytes</option>
+        </select>
+        <label>Modifier</label>
+    </div>
+    <div class="col s6 input-field">
+        <input type="number" [(ngModel)]="bit.isdataat">
+        <label>Position</label>
+    </div>
+</div>

@@ -1,0 +1,1 @@
+{"version":3,"file":"index.js","sourceRoot":"","sources":["../../../src/app/components/rule-output/index.ts"],"names":[],"mappings":";AAAA,sCAAoC,yBAAyB,CAAC;AAArD,0EAAqD","sourcesContent":["export { RuleOutputComponent } from './rule-output.component';\n"]}

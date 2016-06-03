@@ -1,0 +1,56 @@
+<div class="row">
+    <div class="col s6 input-field">
+        <input type="text" [(ngModel)]="bit.name">
+        <label>Name of variable</label>
+    </div>
+    <div class="col s2 input-field">
+        <input type="number" [(ngModel)]="bit.bytes">
+        <label>Bytes</label>
+    </div>
+    <div class="col s2 input-field">
+        <input type="number" [(ngModel)]="bit.offset">
+        <label>Offset</label>
+    </div>
+    <div class="col s2 input-field">
+        <input type="number" [(ngModel)]="bit.multiplier">
+        <label>Multiplier</label>
+    </div>
+</div>
+<div class="row">
+    <div class="col s2">
+        <label>Endianness</label>
+        <button class="btn blue waves-effect waves-light" (click)="bit.endian = (bit.endian == 'little' ? 'big' : 'little')">{{ (bit.endian || 'big') }}</button>
+    </div>
+    <div class="col s4 input-field">
+        <input type="checkbox" id="extract_dce_{{i}}" [(ngModel)]="bit.dce" />
+        <label attr.for="extract_dce_{{i}}">Use DCE Preprocessor</label>
+    </div>
+    <div class="col s2 input-field">
+        <input type="checkbox" id="extract_align_{{i}}" [(ngModel)]="bit.align" />
+        <label attr.for="extract_align_{{i}}">Align</label>
+    </div>
+    <div class="col s4 input-field">
+        <input type="checkbox" id="extract_relative_{{i}}" [(ngModel)]="bit.relative" />
+        <label attr.for="extract_relative_{{i}}">Relative</label>
+    </div>
+</div>
+<div class="row">
+    <div class="col s3">
+        <label>Data Is String</label>
+        <div class="switch">
+            <label>
+                No
+                <input type="checkbox" [(ngModel)]="bit.string">
+                <span class="lever">&nbsp;</span> Yes
+            </label>
+        </div>
+    </div>
+    <div class="col s9 input-field">
+        <select materialize="material_select" [(ngModel)]="bit.string_type">
+            <option>Hexadecimal</option>
+            <option>Decimal</option>
+            <option>Octal</option>
+        </select>
+        <label>Number format</label>
+    </div>
+</div>

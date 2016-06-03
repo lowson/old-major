@@ -1,0 +1,1 @@
+{"version":3,"file":"index.js","sourceRoot":"","sources":["../../../src/app/components/flow-piece/index.ts"],"names":[],"mappings":";AAAA,qCAAmC,wBAAwB,CAAC;AAAnD,uEAAmD","sourcesContent":["export { FlowPieceComponent } from './flow-piece.component';\n"]}

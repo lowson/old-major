@@ -1,0 +1,37 @@
+<fieldset>
+    <legend>Tag</legend>
+    <div class="row">
+        <div class="col s6">
+            <label>Type</label>
+            <select materialize="material_select" [(ngModel)]="rule.opts.tag_type">
+                <option value="host">host</option>
+                <option value="session">session</option>
+            </select>
+        </div>
+        <div class="col s6 input-field" *ngIf="(rule.opts.tag_type == 'session')">
+            <input type="checkbox" id="exclusive" [(ngModel)]="rule.opts.tag_exclusive">
+            <label for="exclusive">Exclusive</label>
+        </div>
+        <div class="col s6" *ngIf="(rule.opts.tag_type != 'session')">
+            <label>Containing</label>
+            <select materialize="material_select" [(ngModel)]="rule.opts.tag_direction">
+                <option value="src">Source IP</option>
+                <option value="dst">Destination IP</option>
+            </select>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s6 input-field">
+            <label>Count</label>
+            <input type="number" placeholder="Units" [(ngModel)]="rule.opts.tag_count">
+        </div>
+        <div class="col s6 input-field">
+            <select materialize="material_select" [(ngModel)]="rule.opts.tag_unit">
+                <option value="packets">packets</option>
+                <option value="seconds">seconds</option>
+                <option value="bytes">bytes</option>
+            </select>
+            <label>Metric</label>
+        </div>
+    </div>
+</fieldset>
