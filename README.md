@@ -26,9 +26,8 @@ There are four main sections within the rule form:
 ### General
 
 The general tab contains the rule header and general options. Old Major 
-requires that you specify a message for the rule, and that the SID of the
-rule be greater than 1000000 in accordance with the established convention
-for custom rules.
+requires that the SID of the rule be greater than 1000000 in accordance with the
+established convention for custom rules.
 
 ### Non-Payload
 
@@ -36,11 +35,15 @@ The non-payload tab contains fields related to flow, frag, protocol, and flags.
 
 ### Payload
 
-The payload tab contains the cursor modifier, content pattern, PCRE, flowbit, byte jump, byte test, and byte extract fields. Sections are added by clicking on the sidebar. The sections can be rearranged by clicking and dragging using the drag handles on the left of the list items and removed using the X on the right.
+The payload tab contains the cursor modifier, content pattern, PCRE, flowbit,
+byte jump, byte test, and byte extract fields. Sections are added by clicking on
+the sidebar. The sections can be rearranged by clicking and dragging using the
+drag handles on the left of the list items and removed using the X on the right.
 
 ### Post-Detection
 
-The post-detection tab contains the tag, threshold, detection filter, and other post-detection fields.
+The post-detection tab contains the tag, threshold, detection filter, and other
+post-detection fields.
 
 ## Roadmap
 
@@ -48,9 +51,11 @@ There are still many features that can be implemented, including:
 - support for base64\_decode and base\_64 data
 - support for ASN1
 - support for Suricata-specific options, with a toggle for Snort/Suricata
-- more validation, such as ensuring that PCRE is not the first payload section in a rule
+- more validation, such as ensuring that PCRE is not the first payload section
+in a rule
 - importing existing rules
-- user-specified values for the Source/Destination IP/Port fields (i.e. variables)
+- user-specified values for the Source/Destination IP/Port fields
+(i.e. variables)
 
 
 ## Development
@@ -67,4 +72,5 @@ Run `ng build` to compile the Typescript files into the /dist directory.
 
 ### Running
 
-Run `ng serve` for a dev server with live reload. The app will run on port 4200 by default.
+Run `ng serve` for a dev server with live reload. The app will run on port 4200
+by default.
