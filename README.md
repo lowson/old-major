@@ -5,15 +5,11 @@ of fields.
 
 ## Installation
 
-Old Major can be used as a web or desktop app. For web use, run
-`npm install && ng build` in the /web directory and copy 
-the /dist folder to your web root.
+Old Major can be used as a web or desktop app. First, run
+`npm install && ng build` in the Old Major directory.
 
-For desktop use, do the same, but copy /dist to the /desktop folder
-in the old-major directory instead. This folder contains a config file
-for Electron, which you'll also need to install with 
-`sudo npm install -g electron-prebuilt`. Once Electron is installed,
-you can run the app with the run.sh script.
+For desktop use, run `npm run desktop`. To use as a web app,
+copy the /dist folder to your web root.
 
 ## Usage
 
@@ -55,3 +51,20 @@ There are still many features that can be implemented, including:
 - more validation, such as ensuring that PCRE is not the first payload section in a rule
 - importing existing rules
 - user-specified values for the Source/Destination IP/Port fields (i.e. variables)
+
+
+## Development
+
+See CONTRIBUTING.md for instructions on how to contribute to this project.
+
+### Testing
+
+Run `ng test` to run the Karma tests over the project.
+
+### Building
+
+Run `ng build` to compile the Typescript files into the /dist directory.
+
+### Running
+
+Run `ng serve` for a dev server with live reload. The app will run on port 4200 by default.
