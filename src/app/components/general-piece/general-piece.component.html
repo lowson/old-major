@@ -1,9 +1,9 @@
 <fieldset>
     <legend>General</legend>
+    {{messagePresent}}
     <div class="row">
         <div class="col s12 input-field">
-            <i class="material-icons red-text prefix" *ngIf="!rule.opts.msg">error</i>
-            <input type="text" [(ngModel)]="rule.opts.msg" placeholder="Message Text">
+            <input type="text" [(ngModel)]="rule.opts.msg" class="validate">
             <label>Message</label>
         </div>
     </div>

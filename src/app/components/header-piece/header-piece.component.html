@@ -33,28 +33,24 @@
     </div>
     <div class="row">
         <div class="col s3 input-field">
-            <i class="material-icons red-text prefix" *ngIf="!rule.src">error</i>
-            <input type="text" class="validate" pattern=".+" placeholder="IP address, CIDR, list, or variable" list="net_variables" [(ngModel)]="rule.src">
-            <label>Source IP</label>
+            <input type="text" class="validate" pattern="^!?((((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)(\/([0-9]|[1-2][0-9]|3[0-2]))?)|(\[((((((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)(\/([0-9]|[1-2][0-9]|3[0-2]))?))|(\$\w+)),?)*\])|\$\w+)|any$" placeholder="IP address, CIDR, list, or variable" list="net_variables" [(ngModel)]="rule.src">
+            <label data-error="Invalid input">Source IP</label>
         </div>
         <div class="col s2 input-field">
-            <i class="material-icons red-text prefix" *ngIf="!rule.sport">error</i>
-            <input type="text" class="validate" pattern=".+" placeholder="Port, range, or variable" list="port_variables" [(ngModel)]="rule.sport">
-            <label>Source Port</label>
+            <input type="text" class="validate" pattern="^!?((\d+)$|(\d+:)|(:\d+)|(\d+:\d+)|\$\w+)|any$" placeholder="Port, range, or variable" list="port_variables" [(ngModel)]="rule.sport">
+            <label data-error="Invalid input">Source Port</label>
         </div>
         <div class="col s2">
             <label>Direction</label>
             <button class="btn red darken-4 waves-effect waves-light" (click)="toggleDir()"><i class="material-icons">{{rule.dir == '-&gt;' ? "trending_flat" : "swap_horiz"}}</i></button>
         </div>
         <div class="col s3 input-field">
-            <i class="material-icons red-text prefix" *ngIf="!rule.dst">error</i>
-            <input type="text" class="validate" pattern=".+" placeholder="IP address, CIDR, list, or variable" list="net_variables" [(ngModel)]="rule.dst">
-            <label>Destination IP</label>
+            <input type="text" class="validate" pattern="^!?((((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)(\/([0-9]|[1-2][0-9]|3[0-2]))?)|(\[((((((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)(\/([0-9]|[1-2][0-9]|3[0-2]))?))|(\$\w+)),?)*\])|\$\w+)|any$" placeholder="IP address, CIDR, list, or variable" list="net_variables" [(ngModel)]="rule.dst">
+            <label data-error="Invalid input">Destination IP</label>
         </div>
         <div class="col s2 input-field">
-            <i class="material-icons red-text prefix" *ngIf="!rule.dport">error</i>
-            <input type="text" class="validate" pattern=".+" placeholder="Port, range, or variable" list="port_variables" [(ngModel)]="rule.dport">
-            <label>Destination Port</label>
+            <input type="text" class="validate" pattern="^!?((\d+)$|(\d+:)|(:\d+)|(\d+:\d+)|\$\w+)|any$" placeholder="Port, range, or variable" list="port_variables" [(ngModel)]="rule.dport">
+            <label data-error="Invalid input">Destination Port</label>
         </div>
         <datalist id="net_variables">
             <option *ngFor="let v of hostVariables" value="{{v}}"></option>
