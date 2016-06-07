@@ -1,1 +1,0 @@
-{"version":3,"file":"index.js","sourceRoot":"","sources":["../../../src/app/components/detection-filter-piece/index.ts"],"names":[],"mappings":";AAAA,iDAA8C,oCAAoC,CAAC;AAA1E,yGAA0E","sourcesContent":["export { DetectionFilterPieceComponent } from './detection-filter-piece.component';\n"]}

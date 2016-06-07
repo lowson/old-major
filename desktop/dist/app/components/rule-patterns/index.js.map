@@ -1,1 +1,0 @@
-{"version":3,"file":"index.js","sourceRoot":"","sources":["../../../src/app/components/rule-patterns/index.ts"],"names":[],"mappings":";AAAA,wCAAsC,2BAA2B,CAAC;AAAzD,gFAAyD","sourcesContent":["export { RulePatternsComponent } from './rule-patterns.component';\n"]}

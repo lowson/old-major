@@ -1,1 +1,0 @@
-{"version":3,"file":"index.js","sourceRoot":"","sources":["../../../src/app/components/payload-regex/index.ts"],"names":[],"mappings":";AAAA,wCAAsC,2BAA2B,CAAC;AAAzD,gFAAyD","sourcesContent":["export { PayloadRegexComponent } from './payload-regex.component';\n"]}

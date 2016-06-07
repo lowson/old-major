@@ -1,1 +1,0 @@
-{"version":3,"file":"index.js","sourceRoot":"","sources":["../../../src/app/components/threshold-piece/index.ts"],"names":[],"mappings":";AAAA,0CAAwC,6BAA6B,CAAC;AAA7D,sFAA6D","sourcesContent":["export { ThresholdPieceComponent } from './threshold-piece.component';\n"]}

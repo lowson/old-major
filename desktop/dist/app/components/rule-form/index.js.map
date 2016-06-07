@@ -1,1 +1,0 @@
-{"version":3,"file":"index.js","sourceRoot":"","sources":["../../../src/app/components/rule-form/index.ts"],"names":[],"mappings":";AAAA,oCAAkC,uBAAuB,CAAC;AAAjD,oEAAiD","sourcesContent":["export { RuleFormComponent } from './rule-form.component';\n"]}
