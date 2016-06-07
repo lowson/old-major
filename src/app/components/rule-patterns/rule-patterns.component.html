@@ -38,7 +38,7 @@
                 <span *ngSwitchWhen="'bytejump'">Byte Jump</span>
                 <span *ngSwitchWhen="'byteextract'">Byte Extract</span>
                 <span *ngSwitchWhen="'bytetest'">Byte Test</span>
-                <button class="btn red darken-4" (click)="remove(i)"><i class="material-icons">close</i></button>
+                <i class="material-icons btn-close" (click)="remove(i)">close</i>
             </div>
             <div class="collapsible-body">
                 <div class="container" *ngSwitchWhen="'regex'">
